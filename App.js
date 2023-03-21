@@ -1,13 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import SearchScreen from "./src/screens/SearchScreen";
+import { NativeWindStyleSheet } from "nativewind";
 
-export default function App() {
-  return (
-    <View>
-      <Text className = "text-red-500">Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
 
 
+
+
+
+const navigator = createStackNavigator({
+  Search: SearchScreen,
+}, {
+  initialRouteName : "Search",
+  defaultNavigationOptions : {
+    title : "Food Search"
+  },
+  
+},
+{
+  headerMode: 'screen',
+  cardStyle: { backgroundColor: '#fff' },
+},
+
+);
+
+export default createAppContainer(navigator);
